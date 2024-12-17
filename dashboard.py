@@ -134,10 +134,24 @@ if "num_rows" not in st.session_state:
 
 def add_row():
     st.session_state.num_rows += 1
+    for i in range(st.session_state.num_rows):
+        col1, col2 = st.columns(2)
+        with col1:
+            st.text_input(f"Filler Parameter {i+1} Name:", key=f"text_input_{i}_1")
+        with col2:
+            st.text_input(f"Filler Parameter {i+1} Value:", key=f"text_input_{i}_2")
+
 
 def remove_row():
     if st.session_state.num_rows > 0:
         st.session_state.num_rows -= 1
+    for i in range(st.session_state.num_rows):
+        col1, col2 = st.columns(2)
+        with col1:
+            st.text_input(f"Filler Parameter {i+1} Name:", key=f"text_input_{i}_1")
+        with col2:
+            st.text_input(f"Filler Parameter {i+1} Value:", key=f"text_input_{i}_2")
+
 
 st.write(f"Enter Any Output File Filler Values:")
 
