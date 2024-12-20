@@ -9,6 +9,7 @@ from PIL import *
 from stqdm import stqdm
 
 from helpers import *
+from reaction_engine import *
 
 batch_amine_secondary_NC = "[N:2]([#6:5])[#6:3].[C:4](=O)[O;D1:1]>>[O:2].[C:4](=O)[N:1]([#6:5])[#6:3]"
 
@@ -20,18 +21,31 @@ st.set_page_config(
     layout="wide",
 )
 
-site_icon = Image.open("./site_files/bulk_smiles_icon.png")
-st.markdown(
-    """
-    <div style="display: flex; align-items: center;">
-        <img src="data:image/png;base64,{st.image(site_icon, use_column_width=False)}" alt="Logo" style="margin-right: 10px;">
-        <h1 style="margin: 0;">autoSMILES</h1>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+# site_icon = Image.open("./site_files/bulk_smiles_icon.png")
+# st.markdown(
+#     """
+#     <div style="display: flex; align-items: center;">
+#         <img src="data:image/png;base64,{st.image(./site_files/bulk_smiles_icon.png, use_column_width=False)}" alt="Logo" style="margin-right: 10px;">
+#         <h1 style="margin: 0;">autoSMILES</h1>
+#     </div>
+#     """,
+#     unsafe_allow_html=True
+# )
+logo_col, title_col = st.columns([0.3, 4])
+
+# Load and display logo in first column
+with logo_col:
+    logo = Image.open('./site_files/bulk_smiles_icon.png')  # Replace with your logo path
+    st.image(logo, width=100)  # Adjust width as needed
+
+# Display title in second column
+with title_col:
+    st.title('autoSMILES')
+
 
 SMARTS_RETRIEVAL_URL = "https://smarts.plus/smartsview/download_rest?smarts=INSERT_REACTION_SMARTS;filetype=png;vmode=0;textdesc=0;depsymbols=0;smartsheading=0"
+
+st.write("Automatic SMILES generation for bulk reactions. Please contact prajkumar@ucsd.edu (Prajit Rajkumar) for any questions or bugs.")
 
 input_reactants = st.file_uploader("Upload input reactant file", 
                                    type=["csv", 'xlsx', "xls", "tsv", "pkl"], 
@@ -62,43 +76,14 @@ if input_reactants is not None:
 
 number_of_reactant_1 = st.number_input("Enter number of reactant 1", min_value=1, max_value=smiles_list_length, value=1)
 
+reactions_database = pd.read_csv("./smarts_reaction_database.csv")
+
 reaction_name = st.selectbox("Select reaction to perform",
-                                options=["Amidation, Amine First",
-                                "Esterification, Alcohol First",
-                                "Amidation, Amine Second",
-                                "Esterification, Alcohol Second",
-                                "Hydroxyl Methylation",
-                                "Amine Methylation",
-                                "Carboxyl Methylation", 
-                                "Custom Reaction"]
+                                options=reactions_database["reaction_name"].tolist()
                                 )
 
-reaction_SMARTS = ["[N;D1:2][#6:3].[C:4](=O)[O;D1:1]>>[O:2].[C:4](=O)[N:1][#6:3]",
-                   "[O;D1:2][#6;!$(C=O):3].[C:4](=O)[O;D1:1]>>[O:2].[C:4](=O)[O:1][#6:3]",
-                   "[C:4](=O)[O;D1:1].[N;D1:2][#6:3]>>[O:2].[C:4](=O)[N:1][#6:3]",
-                   "[C:4](=O)[O;D1:1].[O;D1:2][#6;!$(C=O):3]>>[O:2].[C:4](=O)[O:1][#6:3]",
-                   "[O;D1:2][#6;!$(C=O):3]>>C[O;D2:2][#6;!$(C=O):3]",
-                   "[N;D1:2][#6:3]>>C[N;D2:2][#6:3]",
-                   "[C:4](=O)[O;D1:1]>>[C:4](=O)[O;D2:1]C",
-                   "custom_reaction"
-        ]
-
-if reaction_name == "Amidation, Amine First":
-    reaction = reaction_SMARTS[0]
-elif reaction_name == "Esterification, Alcohol First":
-    reaction = reaction_SMARTS[1]
-elif reaction_name == "Amidation, Amine Second":
-    reaction = reaction_SMARTS[2]
-elif reaction_name == "Esterification, Alcohol Second":
-    reaction = reaction_SMARTS[3]
-elif reaction_name == "Hydroxyl Methylation":
-    reaction = reaction_SMARTS[4]
-elif reaction_name == "Amine Methylation":
-    reaction = reaction_SMARTS[5]
-elif reaction_name == "Carboxyl Methylation":
-    reaction = reaction_SMARTS[6]
-elif reaction_name == "Custom Reaction":
-    reaction = reaction_SMARTS[7]
+reaction = reactions_database.loc[reactions_database["reaction_name"] == reaction_name, "reaction_smarts"].values[0]
+reactant_number = reactions_database.loc[reactions_database["reaction_name"] == reaction_name, "num_reactants"].values[0]
 
 if reaction == "custom_reaction":
     custom_reaction = st.text_input("Enter custom reaction SMARTS")
@@ -126,41 +111,29 @@ if reaction == "custom_reaction":
             st.write("Custom reaction SMARTS is invalid. Please try again.")
 
 else:
-    st.image("./smarts_reaction_images/" + f"{reaction}.png")
+    try:
+        st.image("./smarts_reaction_images/" + f"{reaction}.png")
+    except:
+        st.write("Bug accessing reaction image. Please contact prajkumar@ucsd.edu to report bug.")
 
 #Output Column Filler Values
 if "num_rows" not in st.session_state:
     st.session_state.num_rows = 2 
-
-def add_row():
-    st.session_state.num_rows += 1
-    for i in range(st.session_state.num_rows):
-        col1, col2 = st.columns(2)
-        with col1:
-            st.text_input(f"Filler Parameter {i+1} Name:", key=f"text_input_{i}_1")
-        with col2:
-            st.text_input(f"Filler Parameter {i+1} Value:", key=f"text_input_{i}_2")
-
-
-def remove_row():
-    if st.session_state.num_rows > 0:
-        st.session_state.num_rows -= 1
-    for i in range(st.session_state.num_rows):
-        col1, col2 = st.columns(2)
-        with col1:
-            st.text_input(f"Filler Parameter {i+1} Name:", key=f"text_input_{i}_1")
-        with col2:
-            st.text_input(f"Filler Parameter {i+1} Value:", key=f"text_input_{i}_2")
-
 
 st.write(f"Enter Any Output File Filler Values:")
 
 for i in range(st.session_state.num_rows):
     col1, col2 = st.columns(2)
     with col1:
-        st.text_input(f"Filler Parameter {i+1} Name:", key=f"text_input_{i}_1")
+        try:
+            st.text_input(f"Filler Parameter {i+1} Name:", key=f"text_input_{i}_1")
+        except:
+            pass
     with col2:
-        st.text_input(f"Filler Parameter {i+1} Value:", key=f"text_input_{i}_2")
+        try:
+            st.text_input(f"Filler Parameter {i+1} Value:", key=f"text_input_{i}_2")
+        except:
+            pass
 
 col_add, col_remove = st.columns(2)
 with col_add:
@@ -182,84 +155,35 @@ filler_column_values = [x for x in filler_column_values if x != ""]
 filler_column_names = [x.strip() for x in filler_column_names]
 filler_column_values = [x.strip() for x in filler_column_values]
 
-exclusion_list = ["N", "O", "o", "OCCO"]
-
 product_list = []
 product_name_list = []
 product_ID_list = []
 
 sample_ID_determinant = st.selectbox("Select which reactant to use as sample ID", options=["first reactant", "second reactant"])
-reaction_started = st.button("Start Reaction")
+reaction_started = st.button("Start Reactions")
 reaction_ran = False
 
 if (reaction_started):
-    reaction_SMARTS_string = reaction
-    for i in stqdm(range(number_of_reactant_1)):
-        r1_smiles = smiles_list[i]
-        first_name = names_list[i]
-        first_ID = sample_ID_list[i]
-        for num, j in enumerate(smiles_list[number_of_reactant_1:]):
-            second_name = names_list[number_of_reactant_1 + num]
-            second_ID = sample_ID_list[number_of_reactant_1 + num]
-            r2_smiles = Chem.CanonSmiles(j)
-            try:
-                r1_mol = Chem.MolFromSmiles(r1_smiles)
-            except Exception as e:
-                print(f"Exception: \"{e}\" at row {i + 1}")
-                #print(r1_smiles)
-                pass
-            try:
-                r2_mol = Chem.MolFromSmiles(r2_smiles)
-            except Exception as e:
-                print(f"Exception: \"{e}\" at row {number_of_reactant_1 + num + 2}")
+    if reactant_number == 2:
+        product_ID_list_unique, \
+        product_name_list_unique, \
+        product_list_unique, \
+        reaction_ran = run_double_reaction(reaction, 
+                                           number_of_reactant_1, 
+                                           smiles_list, 
+                                           names_list, 
+                                           sample_ID_list, 
+                                           reaction_name)
+    elif reactant_number == 1:
+        product_ID_list_unique, \
+        product_name_list_unique, \
+        product_list_unique, \
+        reaction_ran = run_single_reaction(reaction, 
+                                           smiles_list, 
+                                           names_list, 
+                                           sample_ID_list, 
+                                           reaction_name)
 
-            reaction = AllChem.ReactionFromSmarts(reaction_SMARTS_string)
-            
-
-            product = reaction.RunReactants((r1_mol, r2_mol))
-            if product:
-                for g in product:
-                    if Chem.MolToSmiles(g[1]) not in exclusion_list:
-                        try:
-                            product_list.append(Chem.CanonSmiles(Chem.MolToSmiles(g[1])))
-                            product_name_list.append(f"{first_name}_{second_name}")
-                            product_ID_list.append(f"{first_ID}__SEPARATOR__{second_ID}")
-                        except Exception as e:
-                            print(e)
-            elif reaction_name == "Amidation, Amine First" or reaction_name == "Amidation, Amine Second":
-                if reaction_name == "Amidation, Amine First":
-                    secondary_reaction = AllChem.ReactionFromSmarts(batch_amine_secondary_NC)
-                else:
-                    secondary_reaction = AllChem.ReactionFromSmarts(batch_amine_secondary_CN)
-                product = secondary_reaction.RunReactants((r1_mol, r2_mol))
-                if product:
-                    for g in product:
-                        if Chem.MolToSmiles(g[1]) not in exclusion_list:
-                            try:
-                                product_list.append(Chem.CanonSmiles(Chem.MolToSmiles(g[1])))
-                                product_name_list.append(f"{first_name}_{second_name}")
-                                product_ID_list.append(f"{first_ID}__SEPARATOR__{second_ID}")
-                            except:
-                                pass
-                else:
-                    print("***********************")
-                    print(r1_smiles)
-                    print(r2_smiles)
-                    print("***********************")
-            else:
-                print("=======================")
-                print(r1_smiles)
-                print(r2_smiles)
-                print("=======================")
-
-    print(len(product_name_list))
-    st.write(f"Reaction finished running. A total number of {len(product_name_list)} reactants was obtained from approximately {(smiles_list_length - number_of_reactant_1) * number_of_reactant_1} reactions ran.")
-    combined_list = zip(product_ID_list, product_name_list, product_list)
-    combined_list = list(set(combined_list))
-    product_ID_list_unique = [i[0] for i in combined_list]
-    product_name_list_unique = [i[1] for i in combined_list]
-    product_list_unique = [i[2] for i in combined_list]
-    reaction_ran = True
 
 if reaction_ran:
     output_file_name = st.text_input("Enter output file name", value=input_reactants_name.split(".")[0] + "_output." + input_reactants_name.split(".")[1])
