@@ -41,6 +41,7 @@ def run_double_reaction(reaction_SMARTS_string,
                 reaction = AllChem.ReactionFromSmarts(reaction_SMARTS_string)
                 
 
+                
                 product = reaction.RunReactants((r1_mol, r2_mol))
                 if product:
                     for g in product:
@@ -135,3 +136,4 @@ def run_single_reaction(reaction_SMARTS_string,
     
 
     return sample_ID_list_unique, product_name_list_unique, product_list_unique, reaction_ran
+

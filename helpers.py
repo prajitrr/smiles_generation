@@ -1,5 +1,6 @@
 from PIL import Image, ImageChops
 import streamlit as st
+from rdkit import Chem
 
 def trim(im):
     bg = Image.new(im.mode, im.size, im.getpixel((0,0)))
@@ -39,3 +40,14 @@ def remove_row():
                 st.text_input(f"Filler Parameter {i+1} Value:", key=f"text_input_{i}_2")
             except:
                 pass
+
+def check_valid_smiles(smiles_string):
+    try:
+        mol = Chem.MolFromSmiles(smiles_string)
+    except:
+        return False
+
+    if mol is None:
+        return False
+    else:
+        return True
