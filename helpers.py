@@ -51,3 +51,7 @@ def check_valid_smiles(smiles_string):
         return False
     else:
         return True
+
+@st.cache_data
+def convert_df(df):
+    return df.to_csv().encode("utf-8")

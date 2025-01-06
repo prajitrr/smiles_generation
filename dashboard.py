@@ -213,8 +213,8 @@ if reaction_ran:
         output_frame[filler_column_names[i]] = filler_column_values[i]
 
     st.write(output_frame)
-
-    st.download_button("Download Output File", output_frame, file_name=output_file_name)
+    csv_output = convert_df(output_frame)
+    st.download_button("Download Output File", csv_output, file_name=output_file_name)
 
     reaction_ran = False
 
