@@ -74,6 +74,14 @@ if input_reactants is not None:
     sample_ID_list = compound_list[sample_ID_column_name]
     smiles_list_length = len(smiles_list)
 
+    valid_smiles = compound_list[SMILES_column_name].apply(check_valid_smiles)
+    if not valid_smiles.all():
+        compound_list_indices = compound_list.index[~valid_smiles].tolist()
+        st.write(f"Invalid SMILES detected at the following positions: {compound_list_indices}. Please fix and re-upload file.")
+        st.stop()
+    else:
+        st.write("All SMILES are valid.")
+
 number_of_reactant_1 = st.number_input("Enter number of reactant 1", min_value=1, max_value=smiles_list_length, value=1)
 
 reactions_database = pd.read_csv("./smarts_reaction_database.csv")
