@@ -77,7 +77,9 @@ if input_reactants is not None:
     valid_smiles = compound_list[SMILES_column_name].apply(check_valid_smiles)
     if not valid_smiles.all():
         compound_list_indices = compound_list.index[~valid_smiles].tolist()
-        st.write(f"Invalid SMILES detected at the following positions: {compound_list_indices}. Please fix and re-upload file.")
+        compound_list_indices = [str(i) for i in compound_list_indices]
+        st.write(f"Invalid SMILES detected at the following position(s): {', '.join(compound_list_indices)}.")
+        st.write("Please fix the invalid SMILES string(s) and upload the file again. Note that the position number is based on the numbering in the table above.")
         st.stop()
     else:
         st.write("All SMILES are valid.")
