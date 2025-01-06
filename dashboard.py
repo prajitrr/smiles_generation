@@ -193,15 +193,16 @@ if (reaction_started):
                                            names_list, 
                                            sample_ID_list, 
                                            reaction_name)
-
+if input_reactants is not None:
+    output_file_name = st.text_input("Enter output file name", value=input_reactants_name.split(".")[0] + "_output." + input_reactants_name.split(".")[1])
 
 if reaction_ran:
-    output_file_name = st.text_input("Enter output file name", value=input_reactants_name.split(".")[0] + "_output." + input_reactants_name.split(".")[1])
 
     output_file_headers = filler_column_names.copy()
     output_file_headers.insert(0, sample_ID_column_name)
-    output_file_headers.append(SMILES_column_name)
     output_file_headers.append(compound_name_column_name)
+    output_file_headers.append(SMILES_column_name)
+    
 
     output_frame = pd.DataFrame(columns=output_file_headers)
 
