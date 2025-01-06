@@ -214,6 +214,8 @@ if reaction_ran:
 
     st.write(output_frame)
 
+    st.download_button("Download Output File", output_frame, file_name=output_file_name)
+
     reaction_ran = False
 
 
