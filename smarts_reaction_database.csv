@@ -1,7 +1,7 @@
 reaction_name,reaction_smarts,num_reactants,
 "Amidation, Amine First",[N;D1:2][#6:3].[C:4](=O)[O;D1:1]>>[O:2].[C:4](=O)[N:1][#6:3],2, 
 "Esterification, Alcohol First",[O;D1:2][#6;!$(C=O):3].[C:4](=O)[O;D1:1]>>[O:2].[C:4](=O)[O:1][#6:3], 2, 
-"Amidation, Amine Second",[C:4](=O)[O;D1:1].[N;D1:2][#6:3]>>[O:2].[C:4](=O)[N:1][#6:3]",2, 
+"Amidation, Amine Second",[C:4](=O)[O;D1:1].[N;D1:2][#6:3]>>[O:2].[C:4](=O)[N:1][#6:3],2, 
 "Esterification, Alcohol Second","[C:4](=O)[O;D1:1].[O;D1:2][#6;!$(C=O):3]>>[O:2].[C:4](=O)[O:1][#6:3]", 2,
 "Hydroxyl Methylation","[O;D1:2][#6;!$(C=O):3].C>>C[O;D2:2][#6;!$(C=O):3]",1,
 "Amine Methylation","[N;D1:2][#6:3].C>>C[N;D2:2][#6:3]",1,

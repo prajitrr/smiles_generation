@@ -1,3 +1,4 @@
+import rdkit
 from rdkit import Chem
 from rdkit.Chem import AllChem
 import pandas as pd
@@ -10,6 +11,8 @@ from stqdm import stqdm
 
 from helpers import *
 from reaction_engine import *
+
+MASS_COLUMN_NAME = "Mass"
 
 batch_amine_secondary_NC = "[N:2]([#6:5])[#6:3].[C:4](=O)[O;D1:1]>>[O:2].[C:4](=O)[N:1]([#6:5])[#6:3]"
 
@@ -202,6 +205,7 @@ if reaction_ran:
     output_file_headers.insert(0, sample_ID_column_name)
     output_file_headers.append(compound_name_column_name)
     output_file_headers.append(SMILES_column_name)
+    output_file_headers.append(MASS_COLUMN_NAME)
     
 
     output_frame = pd.DataFrame(columns=output_file_headers)
@@ -210,6 +214,8 @@ if reaction_ran:
     output_frame[sample_ID_column_name] = product_ID_list_unique
     output_frame[compound_name_column_name] = product_name_list_unique
     output_frame[SMILES_column_name] = product_list_unique
+    output_frame[MASS_COLUMN_NAME] = [rdkit.Chem.rdMolDescriptors.CalcExactMolWt(Chem.MolFromSmiles(i)) for i in product_list_unique]
+    
     for i in range(len(filler_column_names)):
         output_frame[filler_column_names[i]] = filler_column_values[i]
 
