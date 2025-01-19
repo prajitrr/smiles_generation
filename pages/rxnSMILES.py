@@ -1,7 +1,9 @@
 import rdkit
 from rdkit import Chem
 from rdkit.Chem import AllChem
+
 import pandas as pd
+
 from tqdm import tqdm
 import streamlit as st
 import urllib.request as urlreq
@@ -9,8 +11,23 @@ import urllib.parse
 from PIL import *
 from stqdm import stqdm
 
-from helpers import *
-from reaction_engine import *
+from pathlib import Path
+import sys
+
+# from smiles_reaction_modules.helpers import *
+# from smiles_reaction_modules.reaction_engine import *
+
+
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
+from modules.bulk_smiles_reactions.helpers import *
+from modules.bulk_smiles_reactions.reaction_engine import *
+
+SITE_ICON_PATH = "./site_files/bulk_smiles_icon.png"
+
+REACTION_IMAGES_PATH = "./smarts_reaction_images/"
+
+REACTION_DATABASE_PATH = "./databases/smarts_reaction_database.csv"
 
 MASS_COLUMN_NAME = "Mass"
 
@@ -18,11 +35,12 @@ batch_amine_secondary_NC = "[N:2]([#6:5])[#6:3].[C:4](=O)[O;D1:1]>>[O:2].[C:4](=
 
 batch_amine_secondary_CN = "[C:4](=O)[O;D1:1].[N:2]([#6:5])[#6:3]>>[O:2].[C:4](=O)[N:1]([#6:5])[#6:3]"
 
-st.set_page_config(
-    page_title="autoSMILES",
-    page_icon="./site_files/bulk_smiles_icon.png",
-    layout="wide",
-)
+
+
+
+
+st.sidebar.header("Bulk Reactor")
+
 
 # site_icon = Image.open("./site_files/bulk_smiles_icon.png")
 # st.markdown(
@@ -34,21 +52,21 @@ st.set_page_config(
 #     """,
 #     unsafe_allow_html=True
 # )
-logo_col, title_col = st.columns([0.3, 4])
+logo_col, title_col = st.columns([0.5, 4])
 
 # Load and display logo in first column
 with logo_col:
-    logo = Image.open('./site_files/bulk_smiles_icon.png')  # Replace with your logo path
+    logo = Image.open(SITE_ICON_PATH)
     st.image(logo, width=100)  # Adjust width as needed
 
 # Display title in second column
 with title_col:
-    st.title('autoSMILES')
+    st.title('rxnSMILES')
 
 
 SMARTS_RETRIEVAL_URL = "https://smarts.plus/smartsview/download_rest?smarts=INSERT_REACTION_SMARTS;filetype=png;vmode=0;textdesc=0;depsymbols=0;smartsheading=0"
 
-st.write("Automatic SMILES generation for bulk reactions. Please contact prajkumar@ucsd.edu (Prajit Rajkumar) for any questions or bugs.")
+st.write("Automatic SMILES generation for bulk reactions.")
 
 input_reactants = st.file_uploader("Upload input reactant file", 
                                    type=["csv", 'xlsx', "xls", "tsv", "pkl"], 
@@ -89,7 +107,7 @@ if input_reactants is not None:
 
 number_of_reactant_1 = st.number_input("Enter number of reactant 1", min_value=1, max_value=smiles_list_length, value=1)
 
-reactions_database = pd.read_csv("./smarts_reaction_database.csv")
+reactions_database = pd.read_csv(REACTION_DATABASE_PATH)
 
 reaction_name = st.selectbox("Select reaction to perform",
                                 options=reactions_database["reaction_name"].tolist()
@@ -114,18 +132,18 @@ if reaction == "custom_reaction":
             st.write("Custom reaction SMARTS is valid.")
             reaction_smarts_url_safe = urllib.parse.quote(custom_reaction)
             smarts_url = SMARTS_RETRIEVAL_URL.replace("INSERT_REACTION_SMARTS", reaction_smarts_url_safe)
-            urlreq.urlretrieve(smarts_url, "./smarts_reaction_images/" + f"{custom_reaction}.png")
-            reaction_image = Image.open("./smarts_reaction_images/" + f"{custom_reaction}.png")
+            urlreq.urlretrieve(smarts_url, REACTION_IMAGES_PATH + f"{custom_reaction}.png")
+            reaction_image = Image.open(REACTION_IMAGES_PATH + f"{custom_reaction}.png")
             reaction_image = trim(reaction_image)
-            reaction_image.save("./smarts_reaction_images/" + f"{custom_reaction}.png")
-            st.image("./smarts_reaction_images/" + f"{custom_reaction}.png")
+            reaction_image.save(REACTION_IMAGES_PATH + f"{custom_reaction}.png")
+            st.image(REACTION_IMAGES_PATH + f"{custom_reaction}.png")
         
         else:
             st.write("Custom reaction SMARTS is invalid. Please try again.")
 
 else:
     try:
-        st.image("./smarts_reaction_images/" + f"{reaction}.png")
+        st.image(REACTION_IMAGES_PATH + f"{reaction}.png")
     except:
         st.write("Bug accessing reaction image. Please contact prajkumar@ucsd.edu to report bug.")
 
