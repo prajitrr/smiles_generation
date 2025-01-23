@@ -29,7 +29,7 @@ REACTION_IMAGES_PATH = "./smarts_reaction_images/"
 
 REACTION_DATABASE_PATH = "./databases/smarts_reaction_database.csv"
 
-MASS_COLUMN_NAME = "Mass"
+MASS_COLUMN_NAME = "Exact Mass with MASS_PRECISION Decimal Places"
 
 batch_amine_secondary_NC = "[N:2]([#6:5])[#6:3].[C:4](=O)[O;D1:1]>>[O:2].[C:4](=O)[N:1]([#6:5])[#6:3]"
 
@@ -71,9 +71,6 @@ st.write("Automatic SMILES generation for bulk reactions.")
 input_reactants = st.file_uploader("Upload input reactant file", 
                                    type=["csv", 'xlsx', "xls", "tsv", "pkl"], 
                                    key='reactants_file')
-sample_ID_column_name = st.text_input("Enter Sample ID Column Name", value="unique_sample_id")
-compound_name_column_name = st.text_input("Enter Compound Name Column Name", value="compound_name")
-SMILES_column_name = st.text_input("Enter SMILES Column Name", value="SMILES")
 
 smiles_list_length = None
 if input_reactants is not None:
@@ -89,6 +86,22 @@ if input_reactants is not None:
     else:
         input_reactants_name = pd.read_csv(input_reactants)
     st.write(compound_list)
+
+    # Update to include batch file with parameters and use selectbox if batch not provided
+    column_names = compound_list.columns.tolist()
+    sample_ID_column_name = st.text_input("Enter Sample ID Column Name", value="unique_sample_id")
+    if sample_ID_column_name not in column_names:
+        st.write(f"Sample ID column name not found in input file. Please re-enter the correct column name.")
+        st.stop()
+    compound_name_column_name = st.text_input("Enter Compound Name Column Name", value="compound_name")
+    if compound_name_column_name not in column_names:
+        st.write(f"Compound name column name not found in input file. Please re-enter the correct column name.")
+        st.stop()
+    SMILES_column_name = st.text_input("Enter SMILES Column Name", value="SMILES")
+    if SMILES_column_name not in column_names:
+        st.write(f"SMILES column name not found in input file. Please re-enter the correct column name.")
+        st.stop()
+
 
     smiles_list = compound_list[SMILES_column_name]
     names_list = compound_list[compound_name_column_name]
@@ -106,6 +119,10 @@ if input_reactants is not None:
         st.write("All SMILES are valid.")
 
 number_of_reactant_1 = st.number_input("Enter number of reactant 1", min_value=1, max_value=smiles_list_length, value=1)
+sample_ID_determinant = st.selectbox("Select which reactant to use as sample ID", options=["first reactant", "second reactant"])
+mass_precision = st.number_input("Enter the number of decimal places for the mass precision. Enter a high value for maximal precision.", min_value=0, value=4)
+default_mass_column_name = MASS_COLUMN_NAME.replace("MASS_PRECISION", str(mass_precision))
+final_mass_column_name = st.text_input("Enter Mass Column Name", value=default_mass_column_name)
 
 reactions_database = pd.read_csv(REACTION_DATABASE_PATH)
 
@@ -115,6 +132,7 @@ reaction_name = st.selectbox("Select reaction to perform",
 
 reaction = reactions_database.loc[reactions_database["reaction_name"] == reaction_name, "reaction_smarts"].values[0]
 reactant_number = reactions_database.loc[reactions_database["reaction_name"] == reaction_name, "num_reactants"].values[0]
+
 
 if reaction == "custom_reaction":
     custom_reaction = st.text_input("Enter custom reaction SMARTS")
@@ -190,7 +208,6 @@ product_list = []
 product_name_list = []
 product_ID_list = []
 
-sample_ID_determinant = st.selectbox("Select which reactant to use as sample ID", options=["first reactant", "second reactant"])
 reaction_started = st.button("Start Reactions")
 reaction_ran = False
 
@@ -223,7 +240,7 @@ if reaction_ran:
     output_file_headers.insert(0, sample_ID_column_name)
     output_file_headers.append(compound_name_column_name)
     output_file_headers.append(SMILES_column_name)
-    output_file_headers.append(MASS_COLUMN_NAME)
+    output_file_headers.append(final_mass_column_name)
     
 
     output_frame = pd.DataFrame(columns=output_file_headers)
@@ -232,7 +249,7 @@ if reaction_ran:
     output_frame[sample_ID_column_name] = product_ID_list_unique
     output_frame[compound_name_column_name] = product_name_list_unique
     output_frame[SMILES_column_name] = product_list_unique
-    output_frame[MASS_COLUMN_NAME] = [rdkit.Chem.rdMolDescriptors.CalcExactMolWt(Chem.MolFromSmiles(i)) for i in product_list_unique]
+    output_frame[final_mass_column_name] = [round(rdkit.Chem.rdMolDescriptors.CalcExactMolWt(Chem.MolFromSmiles(i)), ndigits=mass_precision) for i in product_list_unique]
     
     for i in range(len(filler_column_names)):
         output_frame[filler_column_names[i]] = filler_column_values[i]
