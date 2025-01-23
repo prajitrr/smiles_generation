@@ -54,7 +54,7 @@ if input_reactants is not None:
     elif input_reactants_name.endswith(".xlsx") or input_reactants_name.endswith(".xls"):
         compound_list = pd.read_excel(input_reactants)
     elif input_reactants_name.endswith(".tsv"):
-        compound_list = pd.read_csv(input_reactants)
+        compound_list = pd.read_csv(input_reactants, sep="\t")
     elif input_reactants_name.endswith(".pkl"):
         compound_list = pd.read_pickle(input_reactants)
     else:
