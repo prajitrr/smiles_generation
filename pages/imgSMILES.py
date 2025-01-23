@@ -51,7 +51,7 @@ if input_reactants is not None:
     input_reactants_name = input_reactants.name
     if input_reactants_name.endswith(".csv"):
         compound_list = pd.read_csv(input_reactants)
-    elif input_reactants_name.endswith(".xlsx") or input_reactants.endswith(".xls"):
+    elif input_reactants_name.endswith(".xlsx") or input_reactants_name.endswith(".xls"):
         compound_list = pd.read_excel(input_reactants)
     elif input_reactants_name.endswith(".tsv"):
         compound_list = pd.read_csv(input_reactants)
