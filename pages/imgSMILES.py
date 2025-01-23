@@ -136,7 +136,8 @@ if generation_started:
             # drawing = drawer.GetDrawingText()
             # with open(TEMP_SVG_PATH, "w") as f:
             #     f.write(drawing)
-            worksheet.insert_image(next_column_letter + str(i + 2), current_path)
+            worksheet.insert_image(next_column_letter + str(i + 2), 
+                                   current_path)
 
         writer.close()
         excel_data = output.getvalue()
