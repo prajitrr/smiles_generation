@@ -36,22 +36,9 @@ batch_amine_secondary_NC = "[N:2]([#6:5])[#6:3].[C:4](=O)[O;D1:1]>>[O:2].[C:4](=
 batch_amine_secondary_CN = "[C:4](=O)[O;D1:1].[N:2]([#6:5])[#6:3]>>[O:2].[C:4](=O)[N:1]([#6:5])[#6:3]"
 
 
-
-
-
 st.sidebar.header("Bulk Reactor")
 
 
-# site_icon = Image.open("./site_files/bulk_smiles_icon.png")
-# st.markdown(
-#     """
-#     <div style="display: flex; align-items: center;">
-#         <img src="data:image/png;base64,{st.image(./site_files/bulk_smiles_icon.png, use_column_width=False)}" alt="Logo" style="margin-right: 10px;">
-#         <h1 style="margin: 0;">autoSMILES</h1>
-#     </div>
-#     """,
-#     unsafe_allow_html=True
-# )
 logo_col, title_col = st.columns([0.5, 4])
 
 # Load and display logo in first column
@@ -119,10 +106,13 @@ if input_reactants is not None:
         st.write("All SMILES are valid.")
 
 number_of_reactant_1 = st.number_input("Enter number of reactant 1", min_value=1, max_value=smiles_list_length, value=1)
-sample_ID_determinant = st.selectbox("Select which reactant to use as sample ID", options=["first reactant", "second reactant"])
+sample_ID_determinant = st.selectbox("Select which reactant to use as sample ID. Multireactions will use the singular reactant type as the sample ID.", options=["first reactant", "second reactant"])
 mass_precision = st.number_input("Enter the number of decimal places for the mass precision. Enter a high value for maximal precision.", min_value=0, value=4)
 default_mass_column_name = MASS_COLUMN_NAME.replace("MASS_PRECISION", str(mass_precision))
 final_mass_column_name = st.text_input("Enter Mass Column Name", value=default_mass_column_name)
+st.write("Select if either of the two sets of reactants should be allowed to undergo multiple reactions.")
+reactant_1_multireact = st.checkbox("Multireact Reactant 1", value=False)
+reactant_2_multireact = st.checkbox("Multireact Reactant 2", value=False)
 
 reactions_database = pd.read_csv(REACTION_DATABASE_PATH)
 
