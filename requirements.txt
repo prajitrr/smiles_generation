@@ -4,3 +4,4 @@ tqdm
 pillow
 stqdm
 xlsxwriter
+numpy
