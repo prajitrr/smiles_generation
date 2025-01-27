@@ -206,12 +206,14 @@ if (reaction_started):
         product_ID_list_unique, \
         product_name_list_unique, \
         product_list_unique, \
-        reaction_ran = run_double_reaction(reaction, 
-                                           number_of_reactant_1, 
-                                           smiles_list, 
-                                           names_list, 
-                                           sample_ID_list, 
-                                           reaction_name)
+        reaction_ran = run_multi_double_reaction(reaction, 
+                                                 number_of_reactant_1, 
+                                                 smiles_list, 
+                                                 names_list, 
+                                                 sample_ID_list, 
+                                                 reaction_name, 
+                                                 reactant_1_multireact,
+                                                 reactant_2_multireact)
     elif reactant_number == 1:
         product_ID_list_unique, \
         product_name_list_unique, \
