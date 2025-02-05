@@ -111,8 +111,10 @@ mass_precision = st.number_input("Enter the number of decimal places for the mas
 default_mass_column_name = MASS_COLUMN_NAME.replace("MASS_PRECISION", str(mass_precision))
 final_mass_column_name = st.text_input("Enter Mass Column Name", value=default_mass_column_name)
 st.write("Select if either of the two sets of reactants should be allowed to undergo multiple reactions.")
-reactant_1_multireact = st.checkbox("Multireact Reactant 1", value=False)
-reactant_2_multireact = st.checkbox("Multireact Reactant 2", value=False)
+# reactant_1_multireact = st.checkbox("Multireact Reactant 1", value=False)
+# reactant_2_multireact = st.checkbox("Multireact Reactant 2", value=False)
+reactant_1_multireact = False
+reactant_2_multireact = False
 
 reactions_database = pd.read_csv(REACTION_DATABASE_PATH)
 

@@ -276,7 +276,7 @@ def run_multi_double_reaction(reaction_SMARTS_string,
     r2_lower_bound = 0
     if multireact_reactant_1:
         print(r1_smarts_match_counts)
-        print(np.power(len(r2_smiles_list), r1_smarts_match_counts)
+        print(np.power(len(r2_smiles_list), r1_smarts_match_counts))
         r1_upper_bound = np.sum(np.power(len(r2_smiles_list), r1_smarts_match_counts))
         r1_lower_bound = np.sum(sp.special.comb(r1_smarts_match_counts.astype(np.int64), len(r2_smiles_list), exact=False, repetition=True))
 
