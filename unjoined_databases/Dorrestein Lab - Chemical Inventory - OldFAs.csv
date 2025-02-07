@@ -1,0 +1,17 @@
+Location,Barcodes,compound_name,mw_g_mol,formula,SMILES,carbon_length,alkene_position,alkene_geometry,saturation,side_chain_hydroxy
+,,12-Hydroxy Stearic Acid,300.483,C18H36O3,CCCCCCC(O)CCCCCCCCCCC(O)=O,18,,,unsaturated,12
+,,3-Hydroxy Heptadecanoic Acid,286.456,C17H34O3,OC(CC(O)CCCCCCCCCCCCCC)=O,17,,,unsaturated,3
+,,3-Hydroxy Tridecanoic Acid,230.348,C13H26O3,OC(CC(O)CCCCCCCCCC)=O,13,,,unsaturated,3
+,,15-Hydroxy Pentadecanoic Acid,258.402,C15H30O3,OCCCCCCCCCCCCCCC(O)=O,15,,,unsaturated,15
+,,3-Hydroxy Octanoic Acid,160.213,C8H16O3,OC(CC(O)CCCCC)=O,8,,,unsaturated,3
+,,3-Hydroxy Undecanoic Acid,202.294,C11H22O3,OC(CC(O)CCCCCCCC)=O,11,,,unsaturated,3
+,,16-Hydroxy Hexadecanoic Acid,272.429,C16H32O3,C(CCCCCCCC(=O)O)CCCCCCCO,16,,,unsaturated,16
+,,3-Hydroxy Lauric Acid,216.321,C12H24O3,CCCCCCCCCC(O)CC(O)=O,12,,,unsaturated,3
+,,2-Hydroxy Docosanoic Acid,356.591,C22H44O3,CCCCCCCCCCCCCCCCCCCCC(O)C(O)=O,22,,,unsaturated,2
+,,2-Hydroxy Myristic Acid,244.375,C14H28O3,CCCCCCCCCCCCC(O)C(=O)O,14,,,unsaturated,2
+,,3-Hydroxy Nonanoic Acid,174.240,C9H18O3,OC(CC(O)CCCCCC)=O,9,,,unsaturated,3
+,,3-Hydroxy Decanoic Acid,188.267,C10H20O3,OC(CC(O)CCCCCCC)=O,10,,,unsaturated,3
+,,Ricineloic Acid,298.467,C18H34O3,CCCCCC[C@@H](O)C/C=C\CCCCCCCC(=O)O,18,,,unsaturated,11
+,,13(Z)-Docosenoic Acid,338.576,C22H42O2,CCCCCCCC/C=C\CCCCCCCCCCCC(=O)O,22,13_14,,unsaturated,NA
+,,3-Hydroxy Hexanoic Acid,132.159,C6H12O3,OC(CC(O)CCC)=O,6,NA,,saturated,3
+,,3-Hydroxy Palmitic Acid,272.429,C16H32O3,CCCCCCCCCCCCCC(O)CC(O)=O,16,NA,,saturated,3

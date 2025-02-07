@@ -51,6 +51,17 @@ def check_valid_smiles(smiles_string):
         return False
     else:
         return True
+    
+def check_valid_inchi(inchi_string):
+    try:
+        mol = Chem.MolFromInchi(inchi_string)
+    except:
+        return False
+
+    if mol is None:
+        return False
+    else:
+        return True
 
 @st.cache_data
 def convert_df(df):

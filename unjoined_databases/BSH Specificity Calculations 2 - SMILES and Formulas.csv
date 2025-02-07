@@ -1,0 +1,124 @@
+Compound Name,,SMILES,Reactants,Formula,Exact Mass,M+H
+Alanine,Ala,O=C(O)[C@H](C)N,Amino Acid,C3H7NO2,89.04768,90.05495
+Arginine,Arg,O=C(O)[C@H](CCCNC(N)=N)N,Amino Acid,C6H14N4O2,174.11168,175.11895
+Asparagine,Asn,O=C(O)[C@H](CC(N)=O)N,Amino Acid,C4H8N2O3,132.05349,133.06076
+Aspartic Acid,Asp,,Amino Acid,C7H4NO7,133.04,134.04727
+Cysteine,Cys,O=C(O)[C@H](CS)N,Amino Acid,C3H7NO2S,121.01975,122.02702
+Cystine,,N[C@@H](CSSCC(C(O)=O)N)C(O)=O,Amino Acid,C6H12N2O4S2,240.02385,241.03112
+DL-Proline,DL-Proline,,Amino Acid,C5H9NO2,115.06,116.06727
+Glutamic Acid,Glu,O=C(O)[C@H](CCC(O)=O)N,Amino Acid,C5H9NO4,147.05316,148.06043
+Glutamine,Gln,O=C(O)[C@H](CCC(N)=O)N,Amino Acid,C5H10N2O3,146.06914,147.07641
+Glycine,Gly,,Amino Acid,C2H5NO2,75.03,76.03727
+Histidine,His,O=C(O)[C@H](CC1=CNC=N1)N,Amino Acid,C6H9N3O2,155.06948,156.07675
+Isoleucine,Iso,O=C(O)[C@H]([C@@H](C)CC)N,Amino Acid,C6H13NO2,131.09463,132.1019
+Leucine,Leu,O=C(O)[C@H](CC(C)C)N,Amino Acid,C6H13NO2,131.09463,132.1019
+Lysine,Lys,O=C(O)[C@H](CCCCN)N,Amino Acid,C6H14N2O2,146.10553,147.1128
+Methionine,Met,O=C(O)[C@H](CCSC)N,Amino Acid,C5H11NO2S,149.05105,150.05832
+Phenylalanine,Phe,O=C(O)[C@H](CC1=CC=CC=C1)N,Amino Acid,C9H11NO2,165.07898,166.08625
+Serine,Ser,O=C(O)[C@H](CO)N,Amino Acid,C3H7NO3,105.04259,106.04986
+Taurine,Tau,OS(=O)(CCN)=O,Amino Acid,C2H7NO3S,125.01466,126.02193
+Threonine,Thr,O=C(O)[C@H]([C@H](O)C)N,Amino Acid,C4H9NO3,119.05824,120.06551
+Tryptophan,Trp,O=C(O)[C@H](CC1=CNC2=CC=CC=C12)N,Amino Acid,C11H12N2O2,204.08988,205.09715
+Tyrosine,Tyr,O=C(O)[C@H](CC1=CC=C(C=C1)O)N,Amino Acid,C9H11NO3,181.07389,182.08116
+Valine,Val,O=C(O)[C@H](C(C)C)N,Amino Acid,C5H11NO2,117.07898,118.08625
+"1,3-Diaminopropane",,,Amino Compound,C3H10N2,74.08,75.08727
+3-methoxytyramine,,,Amino Compound,C9H13NO2,167.09,168.09727
+4-aminophenol,,,Amino Compound,C6H7NO,109.05,110.05727
+5-Aminovaleric Acid,,,Amino Compound,C5H11NO2,117.08,118.08727
+Allantoin,,,Amino Compound,C4H6N4O3,158.04,159.04727
+B-Alanine,,,Amino Compound,C3H7NO2,89.05,90.05727
+Creatine,,,Amino Compound,C4H9N3O2,131.07,132.07727
+DL-2-Phenylglycine,,,Amino Compound,C8H9NO2,151.06,152.06727
+Dopamine,,,Amino Compound,C8H11NO2,153.08,154.08727
+gamma-Aminobutyric acid,,,Amino Compound,C4H9NO2,103.06,104.06727
+Glycyl-L-Valine,,,Amino Compound,C7H14N2O3,174.1,175.10727
+Histamine,,,Amino Compound,C5H9N3,111.08,112.08727
+Isoniazid,,,Amino Compound,C6H7N3O,137.06,138.06727
+L-2-Aminoadipic Acid,,,Amino Compound,C6H11NO4,161.07,162.07727
+L-aspartyl-L-phenylalanine methyl ester,,,Amino Compound,C14H18N2O6,294.12,295.12727
+L-Carnosine,,,Amino Compound,C9H14N4O3,226.11,227.11727
+L-Citrulline,,,Amino Compound,C6H13N3O3,175.1,176.10727
+L-Glutathione (oxidized),,,Amino Compound,C20H32N6O12S2,612.15,613.15727
+L-Glutathione (reduced),,,Amino Compound,C10H17N3O6S,307.08,308.08727
+L-Homoserine ,,,Amino Compound,C4H9NO3,119.06,120.06727
+L(+)-Homoarginine,,,Amino Compound,C7H16N4O2,188.13,189.13727
+L(+)-Ornithine,,,Amino Compound,C5H12N2O2,132.09,133.09727
+Serotonin,,,Amino Compound,C10H12N2O,176.09,177.09727
+trans-4-Hydroxy-L-proline,,,Amino Compound,C5H9NO3,131.06,132.06727
+Tryptamine,,,Amino Compound,C10H12N2,160.1,161.10727
+Tyramine,,,Amino Compound,C8H11NO,137.08,138.08727
+Cholic Acid,,O[C@@H]1CC[C@]2(C)[C@@]3([H])C[C@H](O)[C@]4(C)[C@@H]([C@H](C)CCC(O)=O)CC[C@@]4([H])[C@]3([H])[C@H](O)C[C@@]([H])2C1,Bile Acid,C24H40O5,408.28757,409.29484
+"1,3-Diaminopropane Cholic Acid",,,Conjugated Bile Acid,C27H48N2O4,464.36,465.36727
+3-methoxytyramine Cholic Acid,,,Conjugated Bile Acid,C33H52NO6,557.37,558.37727
+4-aminophenol Cholic Acid,,,Conjugated Bile Acid,C30H46NO5,499.33,500.33727
+5-Aminovaleric Acid Cholic Acid,,,Conjugated Bile Acid,C29H50NO6,507.36,508.36727
+Alanine Cholic Acid,Ala-CA,O[C@@H]1CC[C@]2(C)[C@@]3([H])C[C@H](O)[C@]4(C)[C@@H]([C@H](C)CCC(N[C@@H](C)C(O)=O)=O)CC[C@@]4([H])[C@]3([H])[C@H](O)C[C@@]([H])2C1,Conjugated Bile Acid,C27H45NO6,479.32469,480.33196
+Allantoin Cholic Acid,,,Conjugated Bile Acid,C28H45N4O7,548.32,549.32727
+Arginine Cholic Acid,Arg-CA,O[C@@H]1CC[C@]2(C)[C@@]3([H])C[C@H](O)[C@]4(C)[C@@H]([C@H](C)CCC(N[C@@H](CCCNC(N)=N)C(O)=O)=O)CC[C@@]4([H])[C@]3([H])[C@H](O)C[C@@]([H])2C1,Conjugated Bile Acid,C30H52N4O6,564.38869,565.39596
+Asparagine Cholic Acid,Asn-CA,O[C@@H]1CC[C@]2(C)[C@@]3([H])C[C@H](O)[C@]4(C)[C@@H]([C@H](C)CCC(N[C@@H](CC(N)=O)C(O)=O)=O)CC[C@@]4([H])[C@]3([H])[C@H](O)C[C@@]([H])2C1,Conjugated Bile Acid,C28H46N2O7,522.3305,523.33777
+Aspartic Acid Cholic Acid,Asp-CA,,Conjugated Bile Acid,C28H46NO8,523.32,524.32727
+B-Alanine Cholic Acid,,,Conjugated Bile Acid,C27H46NO6,479.33,480.33727
+Creatine Cholic Acid,,,Conjugated Bile Acid,C28H47N3O6,521.35,522.35727
+Cysteine Cholic Acid,Cys-CA,O[C@@H]1CC[C@]2(C)[C@@]3([H])C[C@H](O)[C@]4(C)[C@@H]([C@H](C)CCC(N[C@@H](CS)C(O)=O)=O)CC[C@@]4([H])[C@]3([H])[C@H](O)C[C@@]([H])2C1,Conjugated Bile Acid,C27H45NO6S,511.29676,512.30403
+Cystine Cholic Acid,,N[C@@H](CSSCC(C(O)=O)NC(CC[C@@H](C)[C@H]1CC[C@@]2([H])[C@]3([H])[C@H](O)C[C@]4([H])C[C@H](O)CC[C@]4(C)[C@@]3([H])C[C@H](O)[C@]12C)=O)C(O)=O,Conjugated Bile Acid,C30H50N2O8S2,630.30086,631.30813
+DL-2-Phenylglycine Cholic Acid,,,Conjugated Bile Acid,C32H48NO6,541.34,542.34727
+DL-Proline Cholic Acid,,,Conjugated Bile Acid,C29H49N2O5,505.34,506.34727
+Dopamine Cholic Acid,,,Conjugated Bile Acid,C32N50NO6,543.36,544.36727
+gamma-Aminobutyric acid Cholic Acid,,,Conjugated Bile Acid,C28H47NO6,493.34,494.34727
+Glutamic Acid Cholic Acid,Glu-CA,O[C@@H]1CC[C@]2(C)[C@@]3([H])C[C@H](O)[C@]4(C)[C@@H]([C@H](C)CCC(N[C@@H](CCC(O)=O)C(O)=O)=O)CC[C@@]4([H])[C@]3([H])[C@H](O)C[C@@]([H])2C1,Conjugated Bile Acid,C29H47NO8,537.33017,538.33744
+Glutamine Cholic Acid,Gln-CA,O[C@@H]1CC[C@]2(C)[C@@]3([H])C[C@H](O)[C@]4(C)[C@@H]([C@H](C)CCC(N[C@@H](CCC(N)=O)C(O)=O)=O)CC[C@@]4([H])[C@]3([H])[C@H](O)C[C@@]([H])2C1,Conjugated Bile Acid,C29H48N2O7,536.34615,537.35342
+Glycine Cholic Acid,Gly-CA,,Conjugated Bile Acid,C26H44NO6,465.31,466.31727
+Glycyl-L-Valine Cholic Acid,,,Conjugated Bile Acid,C31H53N2O7,564.38,565.38727
+Histamine Cholic Acid,,,Conjugated Bile Acid,C29H48N3O4,501.36,502.36727
+Histidine Cholic Acid,His-CA,O[C@@H]1CC[C@]2(C)[C@@]3([H])C[C@H](O)[C@]4(C)[C@@H]([C@H](C)CCC(N[C@@H](CC5=CNC=N5)C(O)=O)=O)CC[C@@]4([H])[C@]3([H])[C@H](O)C[C@@]([H])2C1,Conjugated Bile Acid,C30H47N3O6,545.34649,546.35376
+Isoleucine Cholic Acid,Iso-CA,O[C@@H]1CC[C@]2(C)[C@@]3([H])C[C@H](O)[C@]4(C)[C@@H]([C@H](C)CCC(N[C@@H]([C@@H](C)CC)C(O)=O)=O)CC[C@@]4([H])[C@]3([H])[C@H](O)C[C@@]([H])2C1,Conjugated Bile Acid,C30H51NO6,521.37164,522.37891
+Isoniazid Cholic Acid,,,Conjugated Bile Acid,C30H46N3O5,527.3432,528.35047
+L-2-Aminoadipic Acid Cholic Acid,,,Conjugated Bile Acid,C30H50NO8,551.35,552.35727
+L-aspartyl-L-phenylalanine methyl ester Cholic Acid,,,Conjugated Bile Acid,C38H57N2O9,684.4,685.40727
+L-Carnosine Cholic Acid,,,Conjugated Bile Acid,C33H53N4O7,616.39,617.39727
+L-citrulline Cholic Acid,,,Conjugated Bile Acid,C30H52N3O7,565.38,566.38727
+L-Glutathione (oxidized) Cholic Acid,,,Conjugated Bile Acid,C44H70N6O16S2,1002.43,1003.43727
+L-Glutathione (reduced) Cholic Acid,,,Conjugated Bile Acid,C34H56N3O10S,697.36,698.36727
+L-Homoserine Cholic Acid,,,Conjugated Bile Acid,C28H48NO7,509.34,510.34727
+L(+)-Homoarginine Cholic Acid,,,Conjugated Bile Acid,C31H55N4O6,578.41,579.41727
+L(+)-Ornithine Cholic Acid,,,Conjugated Bile Acid,C29H51N2O6,522.37,523.37727
+Leucine Cholic Acid,Leu-CA,O[C@@H]1CC[C@]2(C)[C@@]3([H])C[C@H](O)[C@]4(C)[C@@H]([C@H](C)CCC(N[C@@H](CC(C)C)C(O)=O)=O)CC[C@@]4([H])[C@]3([H])[C@H](O)C[C@@]([H])2C1,Conjugated Bile Acid,C30H51NO6,521.37164,522.37891
+Lysine Cholic Acid,Lys-CA,O[C@@H]1CC[C@]2(C)[C@@]3([H])C[C@H](O)[C@]4(C)[C@@H]([C@H](C)CCC(N[C@@H](CCCCN)C(O)=O)=O)CC[C@@]4([H])[C@]3([H])[C@H](O)C[C@@]([H])2C1,Conjugated Bile Acid,C30H52N2O6,536.38254,537.38981
+Methionine Cholic Acid,Met-CA,O[C@@H]1CC[C@]2(C)[C@@]3([H])C[C@H](O)[C@]4(C)[C@@H]([C@H](C)CCC(N[C@@H](CCSC)C(O)=O)=O)CC[C@@]4([H])[C@]3([H])[C@H](O)C[C@@]([H])2C1,Conjugated Bile Acid,C29H49NO6S,539.32806,540.33533
+Phenylalanine Cholic Acid,Phe-CA,O[C@@H]1CC[C@]2(C)[C@@]3([H])C[C@H](O)[C@]4(C)[C@@H]([C@H](C)CCC(N[C@@H](CC5=CC=CC=C5)C(O)=O)=O)CC[C@@]4([H])[C@]3([H])[C@H](O)C[C@@]([H])2C1,Conjugated Bile Acid,C33H49NO6,555.35599,556.36326
+Serine Cholic Acid,Ser-CA,O[C@@H]1CC[C@]2(C)[C@@]3([H])C[C@H](O)[C@]4(C)[C@@H]([C@H](C)CCC(N[C@@H](CO)C(O)=O)=O)CC[C@@]4([H])[C@]3([H])[C@H](O)C[C@@]([H])2C1,Conjugated Bile Acid,C27H45NO7,495.3196,496.32687
+Serotonin Cholic Acid,,,Conjugated Bile Acid,C34H50N2O5,566.37,567.37727
+Tauryl Cholic Acid,,O[C@@H]1CC[C@]2(C)[C@@]3([H])C[C@H](O)[C@]4(C)[C@@H]([C@H](C)CCC(NCCS(O)(=O)=O)=O)CC[C@@]4([H])[C@]3([H])[C@H](O)C[C@@]([H])2C1,Conjugated Bile Acid,C26H45NO7S,515.29167,516.29894
+Threonine Cholic Acid,Thr-CA,O[C@@H]1CC[C@]2(C)[C@@]3([H])C[C@H](O)[C@]4(C)[C@@H]([C@H](C)CCC(N[C@@H]([C@H](O)C)C(O)=O)=O)CC[C@@]4([H])[C@]3([H])[C@H](O)C[C@@]([H])2C1,Conjugated Bile Acid,C28H47NO7,509.33525,510.34252
+trans-4-Hydroxy-L-proline Cholic Acid,trans-4-Hydroxy-L-proline-CA,,Conjugated Bile Acid,C29H48NO7,521.34,522.34727
+Tryptamine Cholic Acid,Trytamine-CA,,Conjugated Bile Acid,C34H51H2NO4,550.38,551.38727
+Tryptophan Cholic Acid,Trp-CA,O[C@@H]1CC[C@]2(C)[C@@]3([H])C[C@H](O)[C@]4(C)[C@@H]([C@H](C)CCC(N[C@@H](CC5=CNC6=CC=CC=C56)C(O)=O)=O)CC[C@@]4([H])[C@]3([H])[C@H](O)C[C@@]([H])2C1,Conjugated Bile Acid,C35H50N2O6,594.36689,595.37416
+Tyramine Cholic Acid,Tyramine-CA,,Conjugated Bile Acid,C32H49NO5,527.36,528.36727
+Tyrosine Cholic Acid,Tyr-CA,O[C@@H]1CC[C@]2(C)[C@@]3([H])C[C@H](O)[C@]4(C)[C@@H]([C@H](C)CCC(N[C@@H](CC5=CC=C(C=C5)O)C(O)=O)=O)CC[C@@]4([H])[C@]3([H])[C@H](O)C[C@@]([H])2C1,Conjugated Bile Acid,C33H49NO7,571.3509,572.35817
+Valine Cholic Acid,Val-CA,O[C@@H]1CC[C@]2(C)[C@@]3([H])C[C@H](O)[C@]4(C)[C@@H]([C@H](C)CCC(N[C@@H](C(C)C)C(O)=O)=O)CC[C@@]4([H])[C@]3([H])[C@H](O)C[C@@]([H])2C1,Conjugated Bile Acid,C29H49NO6,507.35599,508.36326
+Glycocholic Acid,Gly-CA,,Conjugated Bile Acid,,,1.00727
+Glycochenodeoxycholic Acid,Gly-CDCA,,Conjugated Bile Acid,,,1.00727
+Glycodeoxycholic Acid,Gly-DCA,,Conjugated Bile Acid,,,1.00727
+Glycohyoxydeoxycholic Acid,Gly-HDCA,,Conjugated Bile Acid,,,1.00727
+Glycolithocholic Acid,Gly-LCA,,Conjugated Bile Acid,,,1.00727
+Glycoursoedeoxycholic Acid,Gly-UDCA,,Conjugated Bile Acid,,,1.00727
+Taurocholic Acid,Tau-CA,,Conjugated Bile Acid,,,1.00727
+Taurochenodeoxycholic Acid,Tau-CDCA,,Conjugated Bile Acid,,,1.00727
+Taurodeoxycholic Acid,Tau-DCA,,Conjugated Bile Acid,,,1.00727
+Taurohyodeoxycholic Acid,Tau-HDCA,,Conjugated Bile Acid,,,1.00727
+Taurolithocholic Acid,Tau-LCA,,Conjugated Bile Acid,,,1.00727
+Tauroursodeoxycholic Acid,Tau-UDCA,,Conjugated Bile Acid,,,1.00727
+Spermidine,,,Amino Compound,,145.25,146.25727
+Spermine,,,Amino Compound,,202.34,203.34727
+Cadaverine,,,Amino Compound,,102.18,103.18727
+Putrescine,,,Amino Compound,,88.15,89.15727
+3a12k-Gly,"Gly-3a,12k-C24oic(OH)(O)",,Keto Bile Acid,,447.6,448.60727
+3a12k-Tau,"Tau-3a,12k-C24oic(OH)2",,Keto Bile Acid,,497.7,498.70727
+3a7a12k-Gly,"Gly-3a,7a,12k-C24oic(OH)2(O)",,Keto Bile Acid,,463.6,464.60727
+3a7a12k-Tau,"Tau-3a,7a,12k-C24oic(OH)2(O)",,Keto Bile Acid,,513.7,514.70727
+3a7k-Gly,"Gly-3a,7k-C24oic(OH)(O)",,Keto Bile Acid,,447.6,448.60727
+3k7a-Gly,"Gly-3k,7a-C24oic(OH)(O)",,Keto Bile Acid,,447.6,448.60727
+3k7k12k-Tau,Tau-DHCA,,Keto Bile Acid,,509.66,510.66727
+"2,3-Diaminopropinoic Acid",,,Amino Compound,,104.11,105.11727
+3-aminophenol,,,Amino Compound,,109.13,110.13727
+3-Hydroxy anthralinic Acid,,,Amino Compound,,153.14,154.14727
