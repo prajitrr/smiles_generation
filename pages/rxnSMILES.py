@@ -167,21 +167,21 @@ if reaction == "custom_reaction":
             #reaction_smarts_url_safe = urllib.parse.quote(custom_reaction)
             #smarts_url = SMARTS_RETRIEVAL_URL.replace("INSERT_REACTION_SMARTS", reaction_smarts_url_safe)
             #urlreq.urlretrieve(smarts_url, REACTION_IMAGES_PATH + f"{custom_reaction}.png")
-            data["query"]["smarts"] = custom_reaction
-            response = requests.post(SMARTS_RETRIEVAL_URL, headers=headers, data=json.dumps(data))
-            job_id = response.json().get("job_id")
-            print(job_id)
-            get_url = f"https://api.smarts.plus/smartsView/?job_id={job_id}"
-            image_response = requests.get(get_url).json()
-            # print(image_response.content)
-            image_png = base64.b64decode(image_response["result"]["image"])
-            with open(REACTION_IMAGES_PATH + f"{custom_reaction}.png", "wb") as f:
-                f.write(image_png)
+            # data["query"]["smarts"] = custom_reaction
+            # response = requests.post(SMARTS_RETRIEVAL_URL, headers=headers, data=json.dumps(data))
+            # job_id = response.json().get("job_id")
+            # print(job_id)
+            # get_url = f"https://api.smarts.plus/smartsView/?job_id={job_id}"
+            # image_response = requests.get(get_url).json()
+            # # print(image_response.content)
+            # image_png = base64.b64decode(image_response["result"]["image"])
+            # with open(REACTION_IMAGES_PATH + f"{custom_reaction}.png", "wb") as f:
+            #     f.write(image_png)
 
-            reaction_image = Image.open(REACTION_IMAGES_PATH + f"{custom_reaction}.png")
-            reaction_image = trim(reaction_image)
-            reaction_image.save(REACTION_IMAGES_PATH + f"{custom_reaction}.png")
-            st.image(REACTION_IMAGES_PATH + f"{custom_reaction}.png")
+            # reaction_image = Image.open(REACTION_IMAGES_PATH + f"{custom_reaction}.png")
+            # reaction_image = trim(reaction_image)
+            # reaction_image.save(REACTION_IMAGES_PATH + f"{custom_reaction}.png")
+            # st.image(REACTION_IMAGES_PATH + f"{custom_reaction}.png")
         
         else:
             st.write("Custom reaction SMARTS is invalid. Please try again.")
