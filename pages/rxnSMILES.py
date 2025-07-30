@@ -172,9 +172,9 @@ if reaction == "custom_reaction":
             get_url = f"https://api.smarts.plus/smartsView/?job_id={job_id}"
             image_response = requests.get(get_url)
 
-            if image_response.status_code == 200:
-                with open(REACTION_IMAGES_PATH + f"{custom_reaction}.png", "wb") as f:
-                    f.write(image_response.content)
+            with open(REACTION_IMAGES_PATH + f"{custom_reaction}.png", "wb") as f:
+                f.write(image_response.content)
+
             reaction_image = Image.open(REACTION_IMAGES_PATH + f"{custom_reaction}.png")
             reaction_image = trim(reaction_image)
             reaction_image.save(REACTION_IMAGES_PATH + f"{custom_reaction}.png")
