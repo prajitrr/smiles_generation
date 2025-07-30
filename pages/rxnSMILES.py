@@ -264,6 +264,7 @@ if input_reactants is not None:
     output_file_name = st.text_input("Enter output file name", value=input_reactants_name.split(".")[0] + "_output." + input_reactants_name.split(".")[1])
 
 if reaction_ran:
+    print("Testing reaction ran")
 
     output_file_headers = filler_column_names.copy()
     output_file_headers.insert(0, sample_ID_column_name)
