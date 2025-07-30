@@ -169,6 +169,7 @@ if reaction == "custom_reaction":
             data["query"]["smarts"] = custom_reaction
             response = requests.post(SMARTS_RETRIEVAL_URL, headers=headers, data=json.dumps(data))
             job_id = response.json().get("job_id")
+            print(job_id)
             get_url = f"https://api.smarts.plus/smartsView/?job_id={job_id}"
             image_response = requests.get(get_url)
             print(image_response.status_code)
