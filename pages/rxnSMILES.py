@@ -5,6 +5,8 @@ from rdkit.Chem import AllChem
 import pandas as pd
 
 from tqdm import tqdm
+import requests
+import json
 import streamlit as st
 import urllib.request as urlreq
 import urllib.parse
@@ -52,6 +54,28 @@ with title_col:
 
 
 SMARTS_RETRIEVAL_URL = "https://smarts.plus/smartsview/download_rest?smarts=INSERT_REACTION_SMARTS;filetype=png;vmode=0;textdesc=0;depsymbols=0;smartsheading=0"
+
+SMARTS_RETRIEVAL_URL = "https://api.smarts.plus/smartsView/"
+headers = {
+    'Content-Type': 'application/json',
+    # 'X-API-Key': 'unused'
+}
+
+data = {
+    "query": {
+        "smarts": "",
+        "parameters": {
+            "file_format": "png",
+            "visualization_mode": 0,
+            "legend_mode": 0,
+            "visualization_of_default_bonds": 0,
+            "labels_for_atoms": False,
+            "smartstrim_active": False,
+            "smarts_string_into_picture": True
+        }
+    }
+}
+
 
 st.write("Automatic SMILES generation for bulk reactions.")
 
@@ -140,9 +164,18 @@ if reaction == "custom_reaction":
 
         if valid_reaction:
             st.write("Custom reaction SMARTS is valid.")
-            reaction_smarts_url_safe = urllib.parse.quote(custom_reaction)
-            smarts_url = SMARTS_RETRIEVAL_URL.replace("INSERT_REACTION_SMARTS", reaction_smarts_url_safe)
-            urlreq.urlretrieve(smarts_url, REACTION_IMAGES_PATH + f"{custom_reaction}.png")
+            #reaction_smarts_url_safe = urllib.parse.quote(custom_reaction)
+            #smarts_url = SMARTS_RETRIEVAL_URL.replace("INSERT_REACTION_SMARTS", reaction_smarts_url_safe)
+            #urlreq.urlretrieve(smarts_url, REACTION_IMAGES_PATH + f"{custom_reaction}.png")
+            data["query"]["smarts"] = custom_reaction
+            response = requests.post(url, headers=headers, data=json.dumps(data))
+            job_id = response.json().get("job_id")
+            get_url = f"https://api.smarts.plus/smartsView/?job_id={job_id}"
+            image_response = requests.get(get_url)
+
+            if image_response.status_code == 200:
+                with open(REACTION_IMAGES_PATH + f"{custom_reaction}.png", "wb") as f:
+                    f.write(image_response.content)
             reaction_image = Image.open(REACTION_IMAGES_PATH + f"{custom_reaction}.png")
             reaction_image = trim(reaction_image)
             reaction_image.save(REACTION_IMAGES_PATH + f"{custom_reaction}.png")
