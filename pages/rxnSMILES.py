@@ -165,6 +165,7 @@ if reaction == "custom_reaction":
         if valid_reaction:
             st.write("Custom reaction SMARTS is valid.")
             reaction = custom_reaction
+            reactant_number = AllChem.ReactionFromSmarts(custom_reaction).GetNumReactantTemplates()
             #reaction_smarts_url_safe = urllib.parse.quote(custom_reaction)
             #smarts_url = SMARTS_RETRIEVAL_URL.replace("INSERT_REACTION_SMARTS", reaction_smarts_url_safe)
             #urlreq.urlretrieve(smarts_url, REACTION_IMAGES_PATH + f"{custom_reaction}.png")
