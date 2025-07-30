@@ -12,6 +12,7 @@ import urllib.request as urlreq
 import urllib.parse
 from PIL import *
 from stqdm import stqdm
+import base64
 
 from pathlib import Path
 import sys
@@ -173,7 +174,7 @@ if reaction == "custom_reaction":
             get_url = f"https://api.smarts.plus/smartsView/?job_id={job_id}"
             image_response = requests.get(get_url).json()
             # print(image_response.content)
-            image_png = image_response["result"]["image"]
+            image_png = base64.b64decode(image_response["result"]["image"])
             with open(REACTION_IMAGES_PATH + f"{custom_reaction}.png", "wb") as f:
                 f.write(image_png)
 
