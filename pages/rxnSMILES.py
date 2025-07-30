@@ -172,7 +172,6 @@ if reaction == "custom_reaction":
             print(job_id)
             get_url = f"https://api.smarts.plus/smartsView/?job_id={job_id}"
             image_response = requests.get(get_url).json()
-            print(image_response.status_code)
             # print(image_response.content)
             image_png = image_response.content["result"]["image"]
             with open(REACTION_IMAGES_PATH + f"{custom_reaction}.png", "wb") as f:
