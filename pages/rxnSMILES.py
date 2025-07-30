@@ -57,7 +57,7 @@ with title_col:
 SMARTS_RETRIEVAL_URL = "https://api.smarts.plus/smartsView/"
 headers = {
     'Content-Type': 'application/json',
-    # 'X-API-Key': 'unused'
+    'X-API-Key': 'lXss4ipVfs9UuXclFkwI5nzjlg-uEcu7VBOFbbhmkuA'
 }
 
 data = {
@@ -168,12 +168,10 @@ if reaction == "custom_reaction":
             #urlreq.urlretrieve(smarts_url, REACTION_IMAGES_PATH + f"{custom_reaction}.png")
             data["query"]["smarts"] = custom_reaction
             response = requests.post(SMARTS_RETRIEVAL_URL, headers=headers, data=json.dumps(data))
-            job_id = response.json()
+            job_id = response.json().get("job_id")
             print(job_id)
             get_url = f"https://api.smarts.plus/smartsView/?job_id={job_id}"
             image_response = requests.get(get_url)
-            print(image_response.status_code)
-            print(image_response.content)
             with open(REACTION_IMAGES_PATH + f"{custom_reaction}.png", "wb") as f:
                 f.write(image_response.content)
 
