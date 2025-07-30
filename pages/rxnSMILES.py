@@ -53,7 +53,6 @@ with title_col:
     st.title('rxnSMILES')
 
 
-SMARTS_RETRIEVAL_URL = "https://smarts.plus/smartsview/download_rest?smarts=INSERT_REACTION_SMARTS;filetype=png;vmode=0;textdesc=0;depsymbols=0;smartsheading=0"
 
 SMARTS_RETRIEVAL_URL = "https://api.smarts.plus/smartsView/"
 headers = {
@@ -168,7 +167,7 @@ if reaction == "custom_reaction":
             #smarts_url = SMARTS_RETRIEVAL_URL.replace("INSERT_REACTION_SMARTS", reaction_smarts_url_safe)
             #urlreq.urlretrieve(smarts_url, REACTION_IMAGES_PATH + f"{custom_reaction}.png")
             data["query"]["smarts"] = custom_reaction
-            response = requests.post(url, headers=headers, data=json.dumps(data))
+            response = requests.post(SMARTS_RETRIEVAL_URL, headers=headers, data=json.dumps(data))
             job_id = response.json().get("job_id")
             get_url = f"https://api.smarts.plus/smartsView/?job_id={job_id}"
             image_response = requests.get(get_url)
